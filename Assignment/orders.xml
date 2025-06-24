@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<orders>
+	<order>
+		<id>1001</id>
+		<status>Shipped</status>
+		<customer>Alice Lee</customer>
+		<date>2025-06-10</date>
+		<total>250.00</total>
+	</order>
+	<order>
+		<id>1002</id>
+		<status>Pending</status>
+		<customer>Bob Tan</customer>
+		<date>2025-06-11</date>
+		<total>180.50</total>
+	</order>
+	<order>
+		<id>1003</id>
+		<status>Delivered</status>
+		<customer>Chong Wei</customer>
+		<date>2025-06-09</date>
+		<total>325.75</total>
+	</order>
+	<order>
+		<id>1004</id>
+		<status>Cancelled</status>
+		<customer>Diana Lim</customer>
+		<date>2025-06-08</date>
+		<total>0.00</total>
+	</order>
+</orders>

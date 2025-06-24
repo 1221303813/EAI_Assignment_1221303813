@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard - WeSell</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+        // Session check before anything else
+        window.onload = function () {
+            const user = localStorage.getItem("username");
+            if (!user) {
+                window.location.href = "login.html";
+            }
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <h1>WeSell</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="profiles.html">Profiles</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <p>Hello, <strong id="userWelcome"></strong>!</p>
+            <p>Welcome to the <strong>WeSell</strong> portal.</p>
+            <p>This platform helps you manage and integrate operations across:</p>
+            <ul>
+                <li><strong>Orders</strong> – Track and manage transactions</li>
+                <li><strong>Products</strong> – Search and list items</li>
+                <li><strong>Support</strong> – View customer support tickets</li>
+                <li><strong>Profiles</strong> – Access customer profile data</li>
+            </ul>
+            <p>Use the navigation above to get started with any module.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 WeSell EAI Integration Project</p>
+    </footer>
+
+    <script>
+        function logout() {
+            localStorage.removeItem("username");
+            localStorage.removeItem("role");
+            window.location.href = "login.html";
+        }
+        window.onload = function () {
+            const user = localStorage.getItem("username");
+            if (!user) {
+                window.location.href = "login.html";
+            } else {
+                document.getElementById("userWelcome").textContent = user;
+            }
+        }
+    </script>
+</body>
+</html>

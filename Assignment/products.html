@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Products - WeSell</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>WeSell</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="profiles.html">Profiles</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Product Search</h2>
+            <p>Search available products in the system by name. Try keywords like "Laptop", "Tablet", or "Phone".</p>
+            <input type="text" id="productSearch" placeholder="Search products..." onkeypress="if(event.key==='Enter'){searchProducts();}" />
+            <button onclick="searchProducts()">Search</button>
+            <ul id="productList"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 WeSell EAI Integration Project</p>
+    </footer>
+
+    <script src="Scripts/app.js"></script>
+</body>
+</html>

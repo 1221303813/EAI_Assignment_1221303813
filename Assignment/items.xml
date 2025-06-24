@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item>
+		<name>Laptop</name>
+		<category>Electronics</category>
+		<price>3500.00</price>
+	</item>
+	<item>
+		<name>Smartphone</name>
+		<category>Electronics</category>
+		<price>2800.00</price>
+	</item>
+	<item>
+		<name>Tablet</name>
+		<category>Electronics</category>
+		<price>2200.00</price>
+	</item>
+	<item>
+		<name>Headphones</name>
+		<category>Accessories</category>
+		<price>199.90</price>
+	</item>
+	<item>
+		<name>Keyboard</name>
+		<category>Accessories</category>
+		<price>129.00</price>
+	</item>
+	<item>
+		<name>Monitor</name>
+		<category>Electronics</category>
+		<price>899.50</price>
+	</item>
+</items>

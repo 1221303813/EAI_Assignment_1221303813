@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<tickets>
+	<ticket>
+		<id>T001</id>
+		<subject>Login issue</subject>
+		<status>Open</status>
+		<priority>High</priority>
+		<date>2025-06-10</date>
+	</ticket>
+	<ticket>
+		<id>T002</id>
+		<subject>Product not delivered</subject>
+		<status>Resolved</status>
+		<priority>Medium</priority>
+		<date>2025-06-09</date>
+	</ticket>
+	<ticket>
+		<id>T003</id>
+		<subject>Billing discrepancy</subject>
+		<status>In Progress</status>
+		<priority>High</priority>
+		<date>2025-06-08</date>
+	</ticket>
+	<ticket>
+		<id>T004</id>
+		<subject>Request refund</subject>
+		<status>Pending</status>
+		<priority>Low</priority>
+		<date>2025-06-07</date>
+	</ticket>
+</tickets>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Orders - WeSell</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>WeSell</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="profiles.html">Profiles</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="orders">
+            <h2>Orders</h2>
+            <button onclick="loadOrders()">Load Orders</button>
+            <ul id="orderList"></ul>
+        </section>
+    </main>
+    <footer><p>&copy; 2025 WeSell EAI Integration Project</p></footer>
+    <script src="Scripts/app.js"></script>
+    <script>
+        const username = localStorage.getItem("username");
+        const role = localStorage.getItem("role");
+
+        if (!username) {
+            alert("Please login first.");
+            window.location.href = "login.html";
+        } else if (!role || role.toLowerCase() !== "admin") {
+            alert("Access denied. Admins only.");
+            window.location.href = "index.html";
+        } else {
+
+            document.getElementById("secureBody").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
