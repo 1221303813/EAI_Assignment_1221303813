@@ -127,6 +127,11 @@ namespace Assignment.Scripts
         [WebMethod]
         public string RespondToTicket(string ticketId, string response)
         {
+            string role = HttpContext.Current.Session["role"]?.ToString();
+            if (role != "admin")
+            {
+                return "Unauthorized: Admin access only.";
+            }
             string path = HttpContext.Current.Server.MapPath("~/tickets.xml");
             XDocument doc = XDocument.Load(path);
 
@@ -141,6 +146,47 @@ namespace Assignment.Scripts
             doc.Save(path);
 
             return $"Response sent for ticket {ticketId}.";
+        }
+
+        [WebMethod]
+        public string UpdateOrderStatus(string orderId, string newStatus, string role)
+        {
+            if (string.IsNullOrEmpty(role) || role.ToLower() != "admin")
+            {
+                return "Unauthorized: Admin access only.";
+            }
+            string[] allowedStatuses = { "Pending", "Approved", "Shipped", "Delivered", "Cancelled" };
+            if (!allowedStatuses.Contains(newStatus))
+            {
+                return $"Invalid status. Allowed values: {string.Join(", ", allowedStatuses)}";
+            }
+
+            string path = HttpContext.Current.Server.MapPath("~/orders.xml");
+            if (!File.Exists(path))
+            {
+                return "orders.xml not found.";
+            }
+
+            try
+            {
+                XDocument doc = XDocument.Load(path);
+                var order = doc.Descendants("order")
+                               .FirstOrDefault(o => (string)o.Element("id") == orderId);
+
+                if (order == null)
+                {
+                    return $"Order with ID {orderId} not found.";
+                }
+
+                order.Element("status")?.SetValue(newStatus);
+                doc.Save(path);
+
+                return $"Order {orderId} status updated to {newStatus}.";
+            }
+            catch (Exception ex)
+            {
+                return "Error updating order: " + ex.Message;
+            }
         }
     }
 }
