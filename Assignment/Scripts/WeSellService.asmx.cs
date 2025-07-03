@@ -113,9 +113,48 @@ namespace Assignment.Scripts
         }
 
         [WebMethod]
-        public string UpdateInventory(string productId, int newQuantity)
+        public string UpdateInventory(string productId, int newQuantity, string role)
         {
-            return $"Inventory updated for {productId}: {newQuantity} in stock.";
+            if (string.IsNullOrEmpty(role) || role.ToLower() != "admin")
+            {
+                return "Unauthorized: Admin access only.";
+            }
+            string path = HttpContext.Current.Server.MapPath("~/items.xml");
+
+            if (!File.Exists(path))
+            {
+                return "items.xml not found.";
+            }
+
+            try
+            {
+                XDocument doc = XDocument.Load(path);
+
+                var item = doc.Descendants("item")
+                              .FirstOrDefault(i =>
+                                  string.Equals((string)i.Element("name"), productId, StringComparison.OrdinalIgnoreCase));
+
+                if (item == null)
+                {
+                    return $"Item '{productId}' not found.";
+                }
+
+                if (item.Element("quantity") != null)
+                {
+                    item.SetElementValue("quantity", newQuantity);
+                }
+                else
+                {
+                    item.Add(new XElement("quantity", newQuantity));
+                }
+
+                doc.Save(path);
+                return $"Inventory updated for {productId}: {newQuantity} in stock.";
+            }
+            catch (Exception ex)
+            {
+                return "Error updating inventory: " + ex.Message;
+            }
         }
 
         [WebMethod]
