@@ -164,10 +164,9 @@ namespace Assignment.Scripts
         }
 
         [WebMethod]
-        public string RespondToTicket(string ticketId, string response)
+        public string RespondToTicket(string ticketId, string response, string role)
         {
-            string role = HttpContext.Current.Session["role"]?.ToString();
-            if (role != "admin")
+            if (string.IsNullOrEmpty(role) || role.ToLower() != "admin")
             {
                 return "Unauthorized: Admin access only.";
             }
